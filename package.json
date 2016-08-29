@@ -1,0 +1,41 @@
+{
+  "name": "react-redux-koa",
+  "version": "0.0.1",
+  "description": "Hacking around with node, koa, react and redux.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "webserver": "node api/src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blairg/react-redux-koa.git"
+  },
+  "keywords": [
+    "boilerplate",
+    "koa",
+    "redux",
+    "react",
+    "webpack",
+    "mocha",
+    "sass"
+  ],
+  "author": "Blair Garrett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blairg/react-redux-koa/issues"
+  },
+  "homepage": "https://github.com/blairg/react-redux-koa#readme",
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "bookshelf": "^0.10.0",
+    "knex": "^0.11.10",
+    "koa": "^1.2.1",
+    "koa-cors": "0.0.16",
+    "koa-route": "^2.4.2",
+    "mysql": "^2.11.1"
+  }
+}
