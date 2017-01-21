@@ -4,13 +4,21 @@ var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 var ROOT_PATH = path.resolve(__dirname);
+var OUTPUT_PATH = (process.env.NODE_ENV === 'production') ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build');
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: process.env.NODE_ENV === 'production' ? '' : 'source-map',
     entry: [
         path.resolve(ROOT_PATH, 'src/index'),
     ],
     module: {
+        preLoaders: [
+            {
+                test: /\.jsx?$/,
+                loaders: (process.env.NODE_ENV === 'production') ? [] : ['eslint'],
+                include: path.resolve(ROOT_PATH, 'app')
+            }
+        ],
         loaders: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
@@ -25,12 +33,12 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     output: {
-        path: path.resolve(ROOT_PATH, 'app/build'),
+        path: OUTPUT_PATH,
         publicPath: '/',
         filename: 'bundle.js'
     },
     devServer: {
-        contentBase: path.resolve(ROOT_PATH, 'app/build'),
+        contentBase: OUTPUT_PATH,
         historyApiFallback: true,
         hot: true,
         inline: true,
